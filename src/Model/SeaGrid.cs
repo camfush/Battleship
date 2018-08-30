@@ -21,10 +21,9 @@ using Microsoft.VisualBasic;
 
 public class SeaGrid : ISeaGrid
 {
-    private const int _WIDTH = 10;
-    private const int _HEIGHT = 10;
+    const int _WIDTH = 10;
+    const int _HEIGHT = 10;
 
-    Private _GameTiles(0 To Width - 1, 0 To Height - 1) As Tile;
     private Tile[][] _GameTiles;
     private Dictionary<ShipName, Ship> _Ships;
     private int _ShipsKilled = 0;

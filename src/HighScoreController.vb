@@ -8,8 +8,8 @@ Imports SwinGameSDK
 ''' Data is saved to a file.
 ''' </remarks>
 Module HighScoreController
-    Private Const NAME_WIDTH As Integer = 3
-    Private Const SCORES_LEFT As Integer = 490
+    const NAME_WIDTH As Integer = 3
+    const SCORES_LEFT As Integer = 490
 
     ''' <summary>
     ''' The score structure is used to keep the name and

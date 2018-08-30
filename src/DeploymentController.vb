@@ -5,26 +5,26 @@ Imports SwinGameSDK
 ''' during the deployment phase.
 ''' </summary>
 Module DeploymentController
-    Private Const SHIPS_TOP As Integer = 98
-    Private Const SHIPS_LEFT As Integer = 20
-    Private Const SHIPS_HEIGHT As Integer = 90
-    Private Const SHIPS_WIDTH As Integer = 300
+    const SHIPS_TOP As Integer = 98
+    const SHIPS_LEFT As Integer = 20
+    const SHIPS_HEIGHT As Integer = 90
+    const SHIPS_WIDTH As Integer = 300
 
-    Private Const TOP_BUTTONS_TOP As Integer = 72
-    Private Const TOP_BUTTONS_HEIGHT As Integer = 46
+    const TOP_BUTTONS_TOP As Integer = 72
+    const TOP_BUTTONS_HEIGHT As Integer = 46
 
-    Private Const PLAY_BUTTON_LEFT As Integer = 693
-    Private Const PLAY_BUTTON_WIDTH As Integer = 80    
+    const PLAY_BUTTON_LEFT As Integer = 693
+    const PLAY_BUTTON_WIDTH As Integer = 80    
 
-    Private Const UP_DOWN_BUTTON_LEFT As Integer = 410
-    Private Const LEFT_RIGHT_BUTTON_LEFT As Integer = 350
+    const UP_DOWN_BUTTON_LEFT As Integer = 410
+    const LEFT_RIGHT_BUTTON_LEFT As Integer = 350
 
-    Private Const RANDOM_BUTTON_LEFT As Integer = 547
-    Private Const RANDOM_BUTTON_WIDTH As Integer = 51
+    const RANDOM_BUTTON_LEFT As Integer = 547
+    const RANDOM_BUTTON_WIDTH As Integer = 51
 
-    Private Const DIR_BUTTONS_WIDTH As Integer = 47
+    const DIR_BUTTONS_WIDTH As Integer = 47
 
-    Private Const TEXT_OFFSET As Integer = 5
+    const TEXT_OFFSET As Integer = 5
 
     Private _currentDirection As Direction = Direction.UpDown
     Private _selectedShip As ShipName = ShipName.Tug

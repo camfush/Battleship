@@ -19,31 +19,31 @@ Module MenuController
                 New String() {"RETURN", "SURRENDER", "QUIT"}, _
                 New String() {"EASY", "MEDIUM", "HARD"}}
 
-    Private Const MENU_TOP As Integer = 575
-    Private Const MENU_LEFT As Integer = 30
-    Private Const MENU_GAP As Integer = 0
-    Private Const BUTTON_WIDTH As Integer = 75
-    Private Const BUTTON_HEIGHT As Integer = 15
-    Private Const BUTTON_SEP As Integer = BUTTON_WIDTH + MENU_GAP
-    Private Const TEXT_OFFSET As Integer = 0
+    const MENU_TOP As Integer = 575
+    const MENU_LEFT As Integer = 30
+    const MENU_GAP As Integer = 0
+    const BUTTON_WIDTH As Integer = 75
+    const BUTTON_HEIGHT As Integer = 15
+    const BUTTON_SEP As Integer = BUTTON_WIDTH + MENU_GAP
+    const TEXT_OFFSET As Integer = 0
 
-    Private Const MAIN_MENU As Integer = 0
-    Private Const GAME_MENU As Integer = 1
-    Private Const SETUP_MENU As Integer = 2
+    const MAIN_MENU As Integer = 0
+    const GAME_MENU As Integer = 1
+    const SETUP_MENU As Integer = 2
 
-    Private Const MAIN_MENU_PLAY_BUTTON As Integer = 0
-    Private Const MAIN_MENU_SETUP_BUTTON As Integer = 1
-    Private Const MAIN_MENU_TOP_SCORES_BUTTON As Integer = 2
-    Private Const MAIN_MENU_QUIT_BUTTON As Integer = 3
+    const MAIN_MENU_PLAY_BUTTON As Integer = 0
+    const MAIN_MENU_SETUP_BUTTON As Integer = 1
+    const MAIN_MENU_TOP_SCORES_BUTTON As Integer = 2
+    const MAIN_MENU_QUIT_BUTTON As Integer = 3
 
-    Private Const SETUP_MENU_EASY_BUTTON As Integer = 0
-    Private Const SETUP_MENU_MEDIUM_BUTTON As Integer = 1
-    Private Const SETUP_MENU_HARD_BUTTON As Integer = 2
-    Private Const SETUP_MENU_EXIT_BUTTON As Integer = 3
+    const SETUP_MENU_EASY_BUTTON As Integer = 0
+    const SETUP_MENU_MEDIUM_BUTTON As Integer = 1
+    const SETUP_MENU_HARD_BUTTON As Integer = 2
+    const SETUP_MENU_EXIT_BUTTON As Integer = 3
 
-    Private Const GAME_MENU_RETURN_BUTTON As Integer = 0
-    Private Const GAME_MENU_SURRENDER_BUTTON As Integer = 1
-    Private Const GAME_MENU_QUIT_BUTTON As Integer = 2
+    const GAME_MENU_RETURN_BUTTON As Integer = 0
+    const GAME_MENU_SURRENDER_BUTTON As Integer = 1
+    const GAME_MENU_QUIT_BUTTON As Integer = 2
 
     Private ReadOnly MENU_COLOR As Color = SwinGame.RGBAColor(2, 167, 252, 255)
     Private ReadOnly HIGHLIGHT_COLOR As Color = SwinGame.RGBAColor(1, 57, 86, 255)

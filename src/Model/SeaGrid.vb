@@ -3,14 +3,14 @@
 ''' </summary>
 ''' <remarks>
 ''' The grid is viewable via the ISeaGrid interface as a read only
-''' grid. This can be used in conjuncture with the SeaGridAdapter to 
+''' grid. This can be used in conjuncture with the SeaGridAdapter to
 ''' mask the position of the ships.
 ''' </remarks>
 Public Class SeaGrid
     Implements ISeaGrid
 
-    Private Const _WIDTH As Integer = 10
-    Private Const _HEIGHT As Integer = 10
+    const _WIDTH As Integer = 10
+    const _HEIGHT As Integer = 10
 
     Private _GameTiles(0 To Width - 1, 0 To Height - 1) As Tile
     Private _Ships As Dictionary(Of ShipName, Ship)
