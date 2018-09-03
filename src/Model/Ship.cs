@@ -85,6 +85,11 @@ public class Ship
         }
     }
 
+    /// <summary>
+    ///      The column location of the ship
+    ///      </summary>
+    ///      <value>The leftmost location of the ship</value>
+    ///      <returns>the column of the ship</returns>
     public int Column
     {
         get
@@ -93,6 +98,11 @@ public class Ship
         }
     }
 
+    /// <summary>
+    ///      The direction of the ship
+    ///      </summary>
+    ///      <value>The direction the shape is facing (up down or left right)</value>
+    ///      <returns>the direction of the ship</returns>
     public Direction Direction
     {
         get
@@ -135,7 +145,7 @@ public class Ship
     }
 
     /// <summary>
-    ///      IsDeployed returns if the ships is deployed, if its deplyed it has more than
+    ///      IsDeployed returns if the ships is deployed, if its deployed it has more than
     ///      0 tiles
     ///      </summary>
     public bool IsDeployed
@@ -146,6 +156,8 @@ public class Ship
         }
     }
 
+    /// <summary>
+    ///      IsDestroyed returns true if the number of hits is equal to the size of the ship (i.e. it has been destroyed)    ///      </summary>
     public bool IsDestroyed
     {
         get

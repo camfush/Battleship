@@ -250,6 +250,9 @@ public class Player : IEnumerable<Ship>
         return result;
     }
 
+    /// <summary>
+    ///      Randomly places each of the ships in the shiplist in a random location for the AI
+    ///      </summary>
     public virtual void RandomizeDeployment()
     {
         bool placementSuccessful;

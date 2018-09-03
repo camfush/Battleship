@@ -1,3 +1,6 @@
+/// <summary>
+///      Names associated with each ship length - each player has one ship for each length between 1 and 5
+///      </summary>
 public enum ShipName
 {
     None = 0,

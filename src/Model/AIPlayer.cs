@@ -2,6 +2,8 @@
 ///  The AIPlayer is a type of player. It can readomly deploy ships, it also has the
 ///  functionality to generate coordinates and shoot at tiles
 ///  </summary>
+
+// FIXME This class isn't being called properly
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

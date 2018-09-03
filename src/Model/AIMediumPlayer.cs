@@ -2,6 +2,8 @@
 ///  The AIMediumPlayer is a type of AIPlayer where it will try and destroy a ship
 ///  if it has found a ship
 ///  </summary>
+
+// FIXME This class isn't being called properly for AI difficulty
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
