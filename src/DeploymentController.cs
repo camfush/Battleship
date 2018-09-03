@@ -13,14 +13,13 @@ using Microsoft.VisualBasic;
 using SwinGameSDK;
 
 /// <summary>
-
 ///  The DeploymentController controls the players actions
-
 ///  during the deployment phase.
-
 ///  </summary>
 static class DeploymentController
 {
+	// These constants define the locations on the screens where buttons are being shown visually.
+	// FIXME - Not all buttons have the correct number associated with them.
     const int SHIPS_TOP = 98;
     const int SHIPS_LEFT = 20;
     const int SHIPS_HEIGHT = 90;

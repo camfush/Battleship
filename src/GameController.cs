@@ -148,6 +148,10 @@ public static class GameController
         SwinGame.RefreshScreen();
     }
 
+    /// <summary>
+    ///      Controls the sequence when the player hits an AI ship, with animation
+    ///      and audio
+    ///      </summary>
     private static void PlayHitSequence(int row, int column, bool showAnimation)
     {
         if (showAnimation)
@@ -158,6 +162,10 @@ public static class GameController
         DrawAnimationSequence();
     }
 
+    /// <summary>
+    ///      Controls the sequence when the player misses their shot, with animation
+    ///      and audio
+    ///      </summary>
     private static void PlayMissSequence(int row, int column, bool showAnimation)
     {
         if (showAnimation)
@@ -186,6 +194,7 @@ public static class GameController
         else
             Message = "The AI " + result.ToString();
 
+        // chooses action based on result of player shot
         switch (result.Value)
         {
             case object _ when ResultOfAttack.Destroyed:
@@ -200,6 +209,7 @@ public static class GameController
                     PlayHitSequence(result.Row, result.Column, isHuman);
                     Audio.PlaySoundEffect(GameSound("Sink"));
 
+                    //while audio is playing, no actions can be taken
                     while (Audio.SoundEffectPlaying(GameSound("Sink")))
                     {
                         SwinGame.Delay(10);
@@ -312,6 +322,8 @@ public static class GameController
     ///      Reads key and mouse input and converts these into
     ///      actions for the game to perform. The actions
     ///      performed depend upon the state of the game.
+    ///      This method is called by the main, and is the core
+    ///      of the rest of the program.
     ///      </remarks>
     public static void HandleUserInput()
     {

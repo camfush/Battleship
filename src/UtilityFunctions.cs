@@ -16,6 +16,16 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using SwinGameSDK;
 
+/// <summary>
+
+///  The functions contained in this class are used by other classes for
+
+///  utility actions - determine fields the player can click within, and
+
+///  displaying audio and video.
+
+///  </summary>
+
 static class UtilityFunctions
 {
     public const int FIELD_TOP = 122;

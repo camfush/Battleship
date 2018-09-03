@@ -12,10 +12,18 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using SwinGameSDK;
 
+/// <summary>
+
+///  The GameResources is responsible for importing all the resources
+
+///  used in this program
+
+///  </summary>
 public static class GameResources
 {
     private static void LoadFonts()
     {
+        //Fonts
         NewFont("ArialLarge", "arial.ttf", 80);
         NewFont("Courier", "cour.ttf", 14);
         NewFont("CourierSmall", "cour.ttf", 8);
@@ -51,6 +59,7 @@ public static class GameResources
 
     private static void LoadSounds()
     {
+        //Sounds
         NewSound("Error", "error.wav");
         NewSound("Hit", "hit.wav");
         NewSound("Sink", "sink.wav");
@@ -109,6 +118,7 @@ public static class GameResources
         return _Music[music];
     }
 
+    //Connects string values to the resources, allowing them to be accessed more easily
     private static Dictionary<string, Bitmap> _Images = new Dictionary<string, Bitmap>();
     private static Dictionary<string, Font> _Fonts = new Dictionary<string, Font>();
     private static Dictionary<string, SoundEffect> _Sounds = new Dictionary<string, SoundEffect>();
@@ -159,6 +169,11 @@ public static class GameResources
         EndLoadingScreen(width, height);
     }
 
+    /// <summary>
+    ///      ShowLoadingScreen loads and displays the sounds and visuals associated
+    ///      with the loading screen of the game
+    ///      </summary>
+
     private static void ShowLoadingScreen()
     {
         _Background = SwinGame.LoadBitmap(SwinGame.PathToResource("SplashBack.png", ResourceKind.BitmapResource));
@@ -176,6 +191,9 @@ public static class GameResources
         PlaySwinGameIntro();
     }
 
+    /// <summary>
+    ///      Displays the SwinGame intro sequence
+    ///      </summary>
     private static void PlaySwinGameIntro()
     {
         const int ANI_CELL_COUNT = 11;
@@ -195,8 +213,13 @@ public static class GameResources
         SwinGame.Delay(1500);
     }
 
+    /// <summary>
+    ///      Takes a message and an integer and displays it on the game screen
+    ///      </summary>
+
     private static void ShowMessage(string message, int number)
     {
+        //TODO Use clearer constant names
         const int TX = 310;
         const int TY = 493;
         const int TW = 200;
@@ -224,6 +247,10 @@ public static class GameResources
         SwinGame.ProcessEvents();
     }
 
+    /// <summary>
+    ///      Handles the closing of the loading screen
+    ///      </summary>
+
     private static void EndLoadingScreen(int width, int height)
     {
         SwinGame.ProcessEvents();
@@ -238,6 +265,10 @@ public static class GameResources
         Audio.FreeSoundEffect(_StartSound);
         SwinGame.ChangeScreenSize(width, height);
     }
+
+    /// <summary>
+    ///      These methods are used to import new resources
+    ///      </summary>
 
     private static void NewFont(string fontName, string filename, int size)
     {
@@ -268,6 +299,10 @@ public static class GameResources
     {
         _Music.Add(musicName, Audio.LoadMusic(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
     }
+
+    /// <summary>
+    ///      These methods are used to free resources no longer being used
+    ///      </summary>
 
     private static void FreeFonts()
     {

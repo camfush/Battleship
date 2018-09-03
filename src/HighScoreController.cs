@@ -194,9 +194,11 @@ static class HighScoreController
 
             s.Name = SwinGame.TextReadAsASCII();
 
-            if (s.Name.Length < 3)
+            // If length of name is 3 or less
+            if (s.Name.Length <= 3)
                 s.Name = s.Name + new string(System.Convert.ToChar(" "), 3 - s.Name.Length);
 
+            //removes the last score, then adds the new one on
             _Scores.RemoveAt(_Scores.Count - 1);
             _Scores.Add(s);
             _Scores.Sort();

@@ -186,6 +186,8 @@ static class MenuController
     ///      of the menu, to enable sub menus. The xOffset repositions the menu horizontally
     ///      to allow the submenus to be positioned correctly.
     ///      </remarks>
+
+    /// FIXME - I think there is an error with the AI difficulty sub menus
     private static void DrawButtons(int menu, int level, int xOffset)
     {
         int btnTop;
