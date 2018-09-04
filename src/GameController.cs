@@ -71,14 +71,14 @@ public static class GameController
         }
     }
 
-    public GameController()
+    /*public GameController()
     {
         // bottom state will be quitting. If player exits main menu then the game is over
         _state.Push(GameState.Quitting);
 
         // at the start the player is viewing the main menu
         _state.Push(GameState.ViewingMainMenu);
-    }
+    }*/
 
     /// <summary>
     ///      Starts a new game.
