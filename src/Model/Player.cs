@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 
-public class Player : IEnumerable<Ship>
+public class Player : List<Ship>
 {
     protected static Random _Random = new Random();
 
@@ -185,7 +185,7 @@ public class Player : IEnumerable<Ship>
     ///      has.
     ///      </summary>
     ///      <returns>A Ship enumerator</returns>
-    public IEnumerator<Ship> GetShipEnumerator()
+    public List<Ship> GetShipEnumerator()
     {
         Ship[] result = new Ship[_Ships.Values.Count + 1];
         _Ships.Values.CopyTo(result, 0);
@@ -200,14 +200,12 @@ public class Player : IEnumerable<Ship>
     ///      has.
     ///      </summary>
     ///      <returns>A Ship enumerator</returns>
-    public IEnumerator<Ship> GetEnumerator()
+    public List<Ship> GetEnumerator()
     {
         Ship[] result = new Ship[_Ships.Values.Count + 1];
         _Ships.Values.CopyTo(result, 0);
         List<Ship> lst = new List<Ship>();
-        lst.AddRange(result);
-
-        return lst.GetEnumerator();
+        return lst.AddRange(result);
     }
 
     /// <summary>
