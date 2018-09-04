@@ -185,21 +185,6 @@ public class Player : List<Ship>
     ///      has.
     ///      </summary>
     ///      <returns>A Ship enumerator</returns>
-    public List<Ship> GetShipEnumerator()
-    {
-        Ship[] result = new Ship[_Ships.Values.Count + 1];
-        _Ships.Values.CopyTo(result, 0);
-        List<Ship> lst = new List<Ship>();
-        lst.AddRange(result);
-
-        return lst.GetEnumerator();
-    }
-
-    /// <summary>
-    ///      Makes it possible to enumerate over the ships the player
-    ///      has.
-    ///      </summary>
-    ///      <returns>A Ship enumerator</returns>
     public List<Ship> GetEnumerator()
     {
         Ship[] result = new Ship[_Ships.Values.Count + 1];
