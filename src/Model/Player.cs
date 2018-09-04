@@ -200,7 +200,7 @@ public class Player : IEnumerable<Ship>
     ///      has.
     ///      </summary>
     ///      <returns>A Ship enumerator</returns>
-    public IEnumerator GetEnumerator()
+    public IEnumerator<Ship> GetEnumerator()
     {
         Ship[] result = new Ship[_Ships.Values.Count + 1];
         _Ships.Values.CopyTo(result, 0);
