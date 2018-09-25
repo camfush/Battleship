@@ -25,20 +25,20 @@ static class UtilityFunctions
 
 	public const int SHIP_GAP = 3;
 	private static readonly Color SMALL_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
-    private static readonly Color SMALL_SEA_P = SwinGame.RGBAColor(230, 0, 220, 255);
-    private static readonly Color SMALL_SHIP = Color.Gray;
+	private static readonly Color SMALL_SHIP = Color.Gray;
 	private static readonly Color SMALL_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
 
 	private static readonly Color SMALL_HIT = SwinGame.RGBAColor(169, 24, 37, 255);
 	private static readonly Color LARGE_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
-    private static readonly Color LARGE_SEA_P = SwinGame.RGBAColor(230, 0, 220, 255);
-    private static readonly Color LARGE_SHIP = Color.Gray;
+	private static readonly Color LARGE_SHIP = Color.Gray;
 	private static readonly Color LARGE_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
 
 	private static readonly Color LARGE_HIT = SwinGame.RGBAColor(252, 2, 3, 255);
 	private static readonly Color OUTLINE_COLOR = SwinGame.RGBAColor(5, 55, 88, 255);
-	private static readonly Color SHIP_FILL_COLOR = Color.Gray;
-	private static readonly Color SHIP_OUTLINE_COLOR = Color.White;
+	private static Color SHIP_FILL_COLOR = Color.Gray;
+    private static readonly Color SHIP_FILL_COLOR_G = SwinGame.RGBAColor(0, 228, 9, 255);
+    private static readonly Color SHIP_FILL_COLOR_P = SwinGame.RGBAColor(230, 0, 220, 255);
+    private static readonly Color SHIP_OUTLINE_COLOR = Color.White;
 
 	private static readonly Color MESSAGE_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 	public const int ANIMATION_CELLS = 7;
@@ -52,6 +52,8 @@ static class UtilityFunctions
 	/// <param name="w">the width to check</param>
 	/// <param name="h">the height to check</param>
 	/// <returns>true if the mouse is in the area checked</returns>
+    /// 
+
 	public static bool IsMouseInRectangle(int x, int y, int w, int h)
 	{
 		Point2D mouse = default(Point2D);
@@ -129,8 +131,11 @@ static class UtilityFunctions
 		int rowTop = 0;
 		int colLeft = 0;
 
-		//Draw the grid
-		for (int row = 0; row <= 9; row++) {
+        if (Colour == "p") { SHIP_FILL_COLOR = SHIP_FILL_COLOR_P; }
+        if (Colour == "g") { SHIP_FILL_COLOR = SHIP_FILL_COLOR_G; }
+
+        //Draw the grid
+        for (int row = 0; row <= 9; row++) {
 			rowTop = top + (cellGap + cellHeight) * row;
 
 			for (int col = 0; col <= 9; col++) {
@@ -161,7 +166,7 @@ static class UtilityFunctions
 					case TileView.Sea:
 					case TileView.Ship:
 						if (small)
-							fillColor = SMALL_SEA_P;
+							fillColor = SMALL_SEA;
 						else
 							draw = false;
 						break;
