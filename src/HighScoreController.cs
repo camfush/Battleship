@@ -197,7 +197,7 @@ static class HighScoreController
 			}
 
 			if (s.Name.Length > 3) {
-				s.Name = s.Name.Remove(0);
+				s.Name = s.Name.Remove(0,1);
 			}
 
 			_Scores.RemoveAt(_Scores.Count - 1);
