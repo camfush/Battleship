@@ -37,6 +37,8 @@ static class DeploymentController
 	private static Direction _currentDirection = Direction.UpDown;
 
 	private static ShipName _selectedShip = ShipName.Tug;
+
+    private static string _colour = "";
     /// <summary>
     /// Handles user input for the Deployment phase of the game.
     /// </summary>
@@ -59,6 +61,21 @@ static class DeploymentController
         if (SwinGame.KeyTyped(KeyCode.vk_LEFT) | SwinGame.KeyTyped(KeyCode.vk_RIGHT))
         {
             _currentDirection = Direction.LeftRight;
+        }
+
+        if (SwinGame.KeyTyped(KeyCode.vk_b))
+        {
+            _colour = "";
+        }
+
+        if (SwinGame.KeyTyped(KeyCode.vk_g))
+        {
+            _colour = "g";
+        }
+
+        if (SwinGame.KeyTyped(KeyCode.vk_p))
+        {
+            _colour = "p";
         }
 
         if (SwinGame.KeyTyped(KeyCode.vk_r)) {
@@ -125,7 +142,7 @@ static class DeploymentController
 	/// </summary>
 	public static void DrawDeployment()
 	{
-		UtilityFunctions.DrawField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer, true);
+		UtilityFunctions.DrawField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer, true, _colour);
 
 		//Draw the Left/Right and Up/Down buttons
 		if (_currentDirection == Direction.LeftRight) {

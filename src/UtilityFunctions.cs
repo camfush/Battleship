@@ -25,12 +25,14 @@ static class UtilityFunctions
 
 	public const int SHIP_GAP = 3;
 	private static readonly Color SMALL_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
-	private static readonly Color SMALL_SHIP = Color.Gray;
+    private static readonly Color SMALL_SEA_P = SwinGame.RGBAColor(230, 0, 220, 255);
+    private static readonly Color SMALL_SHIP = Color.Gray;
 	private static readonly Color SMALL_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
 
 	private static readonly Color SMALL_HIT = SwinGame.RGBAColor(169, 24, 37, 255);
 	private static readonly Color LARGE_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
-	private static readonly Color LARGE_SHIP = Color.Gray;
+    private static readonly Color LARGE_SEA_P = SwinGame.RGBAColor(230, 0, 220, 255);
+    private static readonly Color LARGE_SHIP = Color.Gray;
 	private static readonly Color LARGE_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
 
 	private static readonly Color LARGE_HIT = SwinGame.RGBAColor(252, 2, 3, 255);
@@ -68,16 +70,22 @@ static class UtilityFunctions
 		return result;
 	}
 
-	/// <summary>
-	/// Draws a large field using the grid and the indicated player's ships.
-	/// </summary>
-	/// <param name="grid">the grid to draw</param>
-	/// <param name="thePlayer">the players ships to show</param>
-	/// <param name="showShips">indicates if the ships should be shown</param>
-	public static void DrawField(ISeaGrid grid, Player thePlayer, bool showShips)
+    /// <summary>
+    /// Draws a large field using the grid and the indicated player's ships.
+    /// </summary>
+    /// <param name="grid">the grid to draw</param>
+    /// <param name="thePlayer">the players ships to show</param>
+    /// <param name="showShips">indicates if the ships should be shown</param>
+    public static void DrawField(ISeaGrid grid, Player thePlayer, bool showShips)
+    {
+        DrawCustomField(grid, thePlayer, false, showShips, FIELD_LEFT, FIELD_TOP, FIELD_WIDTH, FIELD_HEIGHT, CELL_WIDTH, CELL_HEIGHT,
+        CELL_GAP);
+    }
+
+    public static void DrawField(ISeaGrid grid, Player thePlayer, bool showShips, string Colour)
 	{
 		DrawCustomField(grid, thePlayer, false, showShips, FIELD_LEFT, FIELD_TOP, FIELD_WIDTH, FIELD_HEIGHT, CELL_WIDTH, CELL_HEIGHT,
-		CELL_GAP);
+		CELL_GAP, Colour);
 	}
 
 	/// <summary>
@@ -114,7 +122,7 @@ static class UtilityFunctions
 	/// <param name="cellHeight">the height of each cell</param>
 	/// <param name="cellGap">the gap between the cells</param>
 	private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight,
-	int cellGap)
+	int cellGap, string Colour)
 	{
 		//SwinGame.FillRectangle(Color.Blue, left, top, width, height)
 
@@ -153,7 +161,7 @@ static class UtilityFunctions
 					case TileView.Sea:
 					case TileView.Ship:
 						if (small)
-							fillColor = SMALL_SEA;
+							fillColor = SMALL_SEA_P;
 						else
 							draw = false;
 						break;
@@ -184,12 +192,12 @@ static class UtilityFunctions
 			colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP;
 
 			if (s.Direction == Direction.LeftRight) {
-				shipName = "ShipLR" + s.Size;
+                shipName = "ShipLR" + s.Size + Colour;
 				shipHeight = cellHeight - (SHIP_GAP * 2);
 				shipWidth = (cellWidth + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap;
 			} else {
 				//Up down
-				shipName = "ShipUD" + s.Size;
+				shipName = "ShipUD" + s.Size + Colour;
 				shipHeight = (cellHeight + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap;
 				shipWidth = cellWidth - (SHIP_GAP * 2);
 			}
@@ -203,8 +211,111 @@ static class UtilityFunctions
 		}
 	}
 
+    private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight,
+    int cellGap)
+    {
+        //SwinGame.FillRectangle(Color.Blue, left, top, width, height)
 
-	private static string _message;
+        int rowTop = 0;
+        int colLeft = 0;
+
+        //Draw the grid
+        for (int row = 0; row <= 9; row++)
+        {
+            rowTop = top + (cellGap + cellHeight) * row;
+
+            for (int col = 0; col <= 9; col++)
+            {
+                colLeft = left + (cellGap + cellWidth) * col;
+
+                Color fillColor = default(Color);
+                bool draw = false;
+
+                draw = true;
+
+                switch (grid[row, col])
+                {
+                    //case TileView.Ship:
+                    //	draw = false;
+                    //	break;
+                    //If small Then fillColor = _SMALL_SHIP Else fillColor = _LARGE_SHIP
+                    case TileView.Miss:
+                        if (small)
+                            fillColor = SMALL_MISS;
+                        else
+                            fillColor = LARGE_MISS;
+                        break;
+                    case TileView.Hit:
+                        if (small)
+                            fillColor = SMALL_HIT;
+                        else
+                            fillColor = LARGE_HIT;
+                        break;
+                    case TileView.Sea:
+                    case TileView.Ship:
+                        if (small)
+                            fillColor = SMALL_SEA;
+                        else
+                            draw = false;
+                        break;
+                }
+
+                if (draw)
+                {
+                    SwinGame.FillRectangle(fillColor, colLeft, rowTop, cellWidth, cellHeight);
+                    if (!small)
+                    {
+                        SwinGame.DrawRectangle(OUTLINE_COLOR, colLeft, rowTop, cellWidth, cellHeight);
+                    }
+                }
+            }
+        }
+
+        if (!showShips)
+        {
+            return;
+        }
+
+        int shipHeight = 0;
+        int shipWidth = 0;
+        string shipName = null;
+
+        //Draw the ships
+        foreach (Ship s in thePlayer)
+        {
+            if (s == null || !s.IsDeployed)
+                continue;
+            rowTop = top + (cellGap + cellHeight) * s.Row + SHIP_GAP;
+            colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP;
+
+            if (s.Direction == Direction.LeftRight)
+            {
+                shipName = "ShipLR" + s.Size;
+                shipHeight = cellHeight - (SHIP_GAP * 2);
+                shipWidth = (cellWidth + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap;
+            }
+            else
+            {
+                //Up down
+                shipName = "ShipUD" + s.Size;
+                shipHeight = (cellHeight + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap;
+                shipWidth = cellWidth - (SHIP_GAP * 2);
+            }
+
+            if (!small)
+            {
+                SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft - 3, rowTop - 3);
+            }
+            else
+            {
+                SwinGame.FillRectangle(SHIP_FILL_COLOR, colLeft, rowTop, shipWidth, shipHeight);
+                SwinGame.DrawRectangle(SHIP_OUTLINE_COLOR, colLeft, rowTop, shipWidth, shipHeight);
+            }
+        }
+    }
+
+
+    private static string _message;
 	/// <summary>
 	/// The message to display
 	/// </summary>

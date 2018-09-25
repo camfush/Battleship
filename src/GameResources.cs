@@ -33,11 +33,16 @@ public static class GameResources
 		NewImage("RandomButton", "deploy_randomize_button.png");
 
 		//Ships
+        //Now imports the coloured ships as well
 		int i = 0;
 		for (i = 1; i <= 5; i++) {
 			NewImage("ShipLR" + i, "ship_deploy_horiz_" + i + ".png");
-			NewImage("ShipUD" + i, "ship_deploy_vert_" + i + ".png");
-		}
+            NewImage("ShipLR" + i + "p", "ship_deploy_horiz_" + i + "p.png");
+            NewImage("ShipLR" + i + "g", "ship_deploy_horiz_" + i + "g.png");
+            NewImage("ShipUD" + i, "ship_deploy_vert_" + i + ".png");
+            NewImage("ShipUD" + i + "p", "ship_deploy_vert_" + i + "p.png");
+            NewImage("ShipUD" + i + "g", "ship_deploy_vert_" + i + "g.png");
+        }
 
 		//Explosions
 		NewImage("Explosion", "explosion.png");
