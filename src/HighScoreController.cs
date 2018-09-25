@@ -196,6 +196,10 @@ static class HighScoreController
 				s.Name = s.Name + new string(Convert.ToChar(" "), 3 - s.Name.Length);
 			}
 
+			if (s.Name.Length > 3) {
+				s.Name = s.Name.Remove(0);
+			}
+
 			_Scores.RemoveAt(_Scores.Count - 1);
 			_Scores.Add(s);
 			_Scores.Sort();
